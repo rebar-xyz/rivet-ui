@@ -1,0 +1,268 @@
+/* Rivet Connect Modal - Default Styles */
+/* Override via CSS custom properties or class overrides */
+
+.rivet-modal {
+  /* Colors */
+  --rivet-bg: #ffffff;
+  --rivet-bg-secondary: #f9fafb;
+  --rivet-bg-hover: #f3f4f6;
+  --rivet-text: #111827;
+  --rivet-text-secondary: #6b7280;
+  --rivet-border: #e5e7eb;
+  --rivet-accent: #3b82f6;
+  --rivet-accent-hover: #2563eb;
+  --rivet-error: #ef4444;
+  --rivet-success: #22c55e;
+
+  /* Spacing */
+  --rivet-radius: 16px;
+  --rivet-radius-sm: 12px;
+  --rivet-padding: 24px;
+  --rivet-gap: 12px;
+
+  /* Animation */
+  --rivet-transition: 150ms ease;
+
+  /* Shadows */
+  --rivet-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Dark mode variant */
+.rivet-modal[data-theme='dark'],
+.rivet-modal.dark {
+  --rivet-bg: #1f2937;
+  --rivet-bg-secondary: #374151;
+  --rivet-bg-hover: #4b5563;
+  --rivet-text: #f9fafb;
+  --rivet-text-secondary: #9ca3af;
+  --rivet-border: #4b5563;
+}
+
+/* Overlay */
+.rivet-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 9998;
+  animation: rivet-fade-in var(--rivet-transition);
+}
+
+/* Content Container */
+.rivet-modal-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  width: 100%;
+  max-width: 400px;
+  max-height: 90vh;
+  overflow: auto;
+  background: var(--rivet-bg);
+  border-radius: var(--rivet-radius);
+  box-shadow: var(--rivet-shadow);
+  animation: rivet-scale-in var(--rivet-transition);
+}
+
+/* Modal Header */
+.rivet-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--rivet-padding);
+  padding-bottom: 0;
+}
+
+.rivet-modal-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--rivet-text);
+}
+
+.rivet-modal-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--rivet-text-secondary);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background var(--rivet-transition), color var(--rivet-transition);
+}
+
+.rivet-modal-close:hover {
+  background: var(--rivet-bg-hover);
+  color: var(--rivet-text);
+}
+
+/* Modal Body */
+.rivet-modal-body {
+  padding: var(--rivet-padding);
+  display: flex;
+  flex-direction: column;
+  gap: var(--rivet-gap);
+}
+
+/* Wallet Button */
+.rivet-wallet-button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 16px;
+  border: 1px solid var(--rivet-border);
+  border-radius: var(--rivet-radius-sm);
+  background: var(--rivet-bg-secondary);
+  color: var(--rivet-text);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background var(--rivet-transition), border-color var(--rivet-transition);
+}
+
+.rivet-wallet-button:hover:not(:disabled) {
+  background: var(--rivet-bg-hover);
+  border-color: var(--rivet-accent);
+}
+
+.rivet-wallet-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.rivet-wallet-button[data-connecting='true'] {
+  position: relative;
+  pointer-events: none;
+}
+
+.rivet-wallet-button[data-connecting='true']::after {
+  content: '';
+  position: absolute;
+  right: 16px;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--rivet-border);
+  border-top-color: var(--rivet-accent);
+  border-radius: 50%;
+  animation: rivet-spin 0.8s linear infinite;
+}
+
+.rivet-wallet-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.rivet-wallet-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.rivet-wallet-name {
+  font-weight: 500;
+}
+
+.rivet-wallet-status {
+  font-size: 0.875rem;
+  color: var(--rivet-text-secondary);
+}
+
+.rivet-wallet-status[data-installed='false'] {
+  color: var(--rivet-accent);
+}
+
+/* Not Installed Link */
+.rivet-install-link {
+  color: var(--rivet-accent);
+  text-decoration: none;
+  font-size: 0.875rem;
+}
+
+.rivet-install-link:hover {
+  text-decoration: underline;
+}
+
+/* Footer */
+.rivet-modal-footer {
+  padding: var(--rivet-padding);
+  padding-top: 0;
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--rivet-text-secondary);
+}
+
+.rivet-modal-footer a {
+  color: var(--rivet-accent);
+  text-decoration: none;
+}
+
+.rivet-modal-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Error State */
+.rivet-error-message {
+  padding: 12px 16px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid var(--rivet-error);
+  border-radius: var(--rivet-radius-sm);
+  color: var(--rivet-error);
+  font-size: 0.875rem;
+}
+
+/* Animations */
+@keyframes rivet-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes rivet-scale-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes rivet-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 480px) {
+  .rivet-modal-content {
+    max-width: calc(100% - 32px);
+    border-radius: var(--rivet-radius-sm);
+  }
+
+  .rivet-modal-body {
+    padding: 16px;
+  }
+
+  .rivet-wallet-button {
+    padding: 12px;
+  }
+
+  .rivet-wallet-icon {
+    width: 36px;
+    height: 36px;
+  }
+}
