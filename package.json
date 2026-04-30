@@ -2,6 +2,7 @@
   "name": "@rebarxyz/rivet-ui",
   "version": "0.1.3",
   "license": "MIT",
+  "packageManager": "bun@1.3.9",
   "description": "Lightweight React wallet hooks and UI for Cosmos chains",
   "type": "module",
   "main": "dist/index.js",
