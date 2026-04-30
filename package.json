@@ -28,8 +28,8 @@
   },
   "scripts": {
     "build": "bun run clean && bun run build:main && bun run build:modal && bun run build:assets && bun run build:declarations",
-    "build:main": "NODE_ENV=production bun build src/index.ts --outdir=dist --entry-naming=[name].[ext] --target=browser --packages=external",
-    "build:modal": "NODE_ENV=production bun build src/modal/index.ts --outdir=dist/modal --entry-naming=[name].[ext] --target=browser --packages=external",
+    "build:main": "bun build src/index.ts --outdir=dist --entry-naming=[name].[ext] --target=browser --packages=external --production",
+    "build:modal": "bun build src/modal/index.ts --outdir=dist/modal --entry-naming=[name].[ext] --target=browser --packages=external --production",
     "build:assets": "cp src/modal/styles.css dist/modal/styles.css",
     "build:declarations": "tsc --emitDeclarationOnly --outDir dist",
     "clean": "rm -rf dist",
